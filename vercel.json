@@ -1,21 +1,6 @@
-// vercel.json
-// Vercel configuration for routing and builds
-// 
-// Route mappings:
-//   - /api/* → API endpoints (serverless functions)
-//   - /projects/{name}/* → Dynamic project routing to /api/projects/[...path].js
-//   - /* → Frontend (built React app from dist/)
-
 {
-  "version": 2,
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "builds": [
-    {
-      "src": "api/**/*.js",
-      "use": "@vercel/node"
-    }
-  ],
   "routes": [
     {
       "src": "/api/(.*)",
@@ -36,8 +21,5 @@
       "src": "/(.*)",
       "dest": "/index.html"
     }
-  ],
-  "env": {
-    "NODE_ENV": "production"
-  }
+  ]
 }
