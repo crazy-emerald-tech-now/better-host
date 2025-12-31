@@ -1,25 +1,13 @@
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
-  "routes": [
+  "builds": [
     {
-      "src": "/api/(.*)",
-      "dest": "/api/$1"
-    },
-    {
-      "src": "/projects/([^/]+)/(.*)",
-      "dest": "/api/projects/$1/$2"
-    },
-    {
-      "src": "/projects/([^/]+)",
-      "dest": "/api/projects/$1"
-    },
-    {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
+      "src": "api/**/*.js",
+      "use": "@vercel/node"
     }
+  ],
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/api/$1" },
+    { "src": "/projects/(.*)", "dest": "/api/projects/[...path].js" },
+    { "src": "/", "dest": "/public/index.html" }
   ]
 }
